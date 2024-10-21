@@ -3,6 +3,7 @@ import TodoItem from "./TodoItem.tsx";
 
 const fetchTodos = async () => {
   const token = localStorage.getItem("access_token");
+  console.log("Token: ", token);
   const response = await fetch("http://127.0.0.1:8000/todos", {
     headers: { Authorization: `Bearer ${token}` },
   });
