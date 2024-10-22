@@ -16,9 +16,7 @@ const CreateTodo = ({ onSubmit }: CreateTodoProps) => {
     try {
       onSubmit(data);
       reset();
-    } catch (error) {
-      console.log("Error creating todo", error);
-    }
+    } catch (error) {}
   };
 
   return (

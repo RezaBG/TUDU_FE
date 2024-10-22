@@ -15,7 +15,7 @@ const fetchTodos = async () => {
 
 const TodoList = () => {
   const {
-    data: todos,
+    data: todos = [],
     error,
     isLoading,
   } = useQuery({
@@ -23,7 +23,7 @@ const TodoList = () => {
     queryFn: fetchTodos,
   });
 
-  if (isLoading) return <div>Loading todos, please wait...</div>;
+  if (isLoading) return <div>Loading...</div>;
   if (error instanceof Error) return <div>{error.message}</div>;
   if (!todos?.length) {
     return <div>No todos available</div>;
