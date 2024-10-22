@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import TodoItem from "./TodoItem.tsx";
-// import { fetchTodos } from "../api/api.ts";
 import { axiosInstance } from "../api/axiosInstance.ts";
 
 type Todo = {
@@ -24,7 +23,7 @@ const TodoList = () => {
     queryFn: fetchTodos,
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>Loading todos, please wait...</div>;
   if (error instanceof Error) return <div>{error.message}</div>;
   if (!todos?.length) {
     return <div>No todos available</div>;
