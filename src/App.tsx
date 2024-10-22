@@ -1,21 +1,19 @@
 import "./App.css";
 import TodoList from "./components/TodoList.tsx";
+import { useState } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
-  const todos = [
-    { id: 1, title: "Learn React", description: "Learn React" },
-    { id: 2, title: "Learn TypeScript", description: "Learn TS" },
-    { id: 3, title: "Build Todo App", description: "TUDU app" },
-  ];
+  const [queryClient] = useState(() => new QueryClient());
 
   const handleAddTodo = () => {};
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <h1>My Todo App</h1>
       <button onClick={handleAddTodo}>Add Todo</button>
-      <TodoList todos={todos} />
-    </>
+      <TodoList />
+    </QueryClientProvider>
   );
 }
 
