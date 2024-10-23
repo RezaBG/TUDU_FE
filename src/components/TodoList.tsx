@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import TodoItem from "./TodoItem.tsx";
 import { axiosInstance } from "../api/axiosInstance.ts";
+// import { TodoData } from "../types";
 
 type Todo = {
   id: number;

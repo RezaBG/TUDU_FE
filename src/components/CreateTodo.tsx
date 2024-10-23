@@ -1,20 +1,14 @@
 import { useForm } from "react-hook-form";
+import { useCreateTodoMutation } from "../mutations/mutations.ts";
+import { TodoData } from "../types";
 
-type FormData = {
-  title: string;
-  description: string;
-};
+const CreateTodo = () => {
+  const { register, handleSubmit, reset } = useForm<TodoData>();
+  const mutation = useCreateTodoMutation();
 
-interface CreateTodoProps {
-  onSubmit: (data: FormData) => void;
-}
-
-const CreateTodo = ({ onSubmit }: CreateTodoProps) => {
-  const { register, handleSubmit, reset } = useForm<FormData>();
-
-  const handleFormSubmit = async (data: FormData) => {
+  const handleFormSubmit = async (data: TodoData) => {
     try {
-      onSubmit(data);
+      mutation.mutate(data);
       reset();
     } catch (error) {}
   };
