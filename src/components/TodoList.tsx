@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import TodoItem from "./TodoItem.tsx";
-// import { fetchTodos } from "../api/api.ts";
 import { axiosInstance } from "../api/axiosInstance.ts";
+// import { TodoData } from "../types";
 
 type Todo = {
   id: number;
@@ -16,7 +16,7 @@ const fetchTodos = async () => {
 
 const TodoList = () => {
   const {
-    data: todos,
+    data: todos = [],
     error,
     isLoading,
   } = useQuery({
