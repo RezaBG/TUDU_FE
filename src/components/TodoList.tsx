@@ -1,13 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import TodoItem from "./TodoItem.tsx";
 import { axiosInstance } from "../api/axiosInstance.ts";
-// import { TodoData } from "../types";
-
-type Todo = {
-  id: number;
-  title: string;
-  description: string;
-};
+import { TodoResponse } from "../types";
 
 const fetchTodos = async () => {
   const response = await axiosInstance.get("/todos");
@@ -32,12 +26,8 @@ const TodoList = () => {
 
   return (
     <div>
-      {todos?.map((todo: Todo) => (
-        <TodoItem
-          key={todo.id}
-          title={todo.title}
-          description={todo.description}
-        />
+      {todos?.map((todo: TodoResponse) => (
+        <TodoItem key={todo.id} todo={todo} />
       ))}
     </div>
   );
