@@ -2,7 +2,7 @@ import { TodoItemProps, UpdateTodoData } from "../types";
 import EditTodo from "./EditTodo.tsx";
 import { useState } from "react";
 import { useUpdateTodoMutation } from "../mutations/mutations.ts";
-import { Button } from "@nanotome/bob";
+// import { Button } from "@nanotome/bob";
 import { FaEdit } from "react-icons/fa";
 
 const TodoItem = ({ todo }: TodoItemProps) => {
@@ -33,10 +33,13 @@ const TodoItem = ({ todo }: TodoItemProps) => {
         <>
           <h3>{todo.title}</h3>
           <p>{todo.description}</p>
-          <Button onClick={toggleEditingForm}>
-            <FaEdit />
-            Edit
-          </Button>
+          {/*<Button onClick={toggleEditingForm}>*/}
+          {/*  <FaEdit />*/}
+          {/*  Edit*/}
+          {/*</Button>*/}
+          <button onClick={toggleEditingForm}>
+            <FaEdit /> Edit
+          </button>
         </>
       )}
     </div>

@@ -31,7 +31,7 @@ const EditTodo = ({
         <label>Description</label>
         <textarea {...register("description", { required: true })}></textarea>
       </div>
-      <Button>Update Todo</Button>
+      <Button onClick={handleSubmit(handleFormSubmit)}>Update Todo</Button>
     </form>
   );
 };
