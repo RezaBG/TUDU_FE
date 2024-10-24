@@ -1,18 +1,24 @@
-import { TodoItemProps } from "../types";
-import { Button } from "@nanotome/bob";
+import { TodoItemProps, UpdateTodoData } from "../types";
 import EditTodo from "./EditTodo.tsx";
 import { useState } from "react";
+import { useUpdateTodoMutation } from "../mutations/mutations.ts";
+import { Button } from "@nanotome/bob";
+import { FaEdit } from "react-icons/fa";
 
 const TodoItem = ({ todo }: TodoItemProps) => {
   const [isEditing, setIsEditing] = useState(false);
+  const updateTodoMutation = useUpdateTodoMutation();
 
   const toggleEditingForm = () => {
     setIsEditing(!isEditing);
   };
 
-  const handleUpdateTodo = () => {
-    // console.log("Update todo:", updateTodo);
-    setIsEditing(false);
+  const handleUpdateTodo = (updatedTodo: UpdateTodoData) => {
+    updateTodoMutation.mutate(updatedTodo, {
+      onSuccess: () => {
+        setIsEditing(false);
+      },
+    });
   };
   return (
     <div className="todo-item">
@@ -27,7 +33,10 @@ const TodoItem = ({ todo }: TodoItemProps) => {
         <>
           <h3>{todo.title}</h3>
           <p>{todo.description}</p>
-          <Button onClick={toggleEditingForm}>Edit</Button>
+          <Button onClick={toggleEditingForm}>
+            <FaEdit />
+            Edit
+          </Button>
         </>
       )}
     </div>
