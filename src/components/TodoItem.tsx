@@ -18,7 +18,7 @@ const TodoItem = ({ todo }: TodoItemProps) => {
         setIsEditing(false);
       },
       onError: (error) => {
-        console.log("Field to update todo", error);
+        console.log("Failed to update todo", error);
       }
     });
   };

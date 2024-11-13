@@ -4,13 +4,16 @@ import { TodoData } from "../types";
 
 const CreateTodo = () => {
   const { register, handleSubmit, reset } = useForm<TodoData>();
+
   const mutation = useCreateTodoMutation();
 
   const handleFormSubmit = async (data: TodoData) => {
     try {
       mutation.mutate(data);
       reset();
-    } catch (error) {}
+    } catch (error) {
+        console.log("Failed to create todo:", error);
+    }
   };
 
   return (

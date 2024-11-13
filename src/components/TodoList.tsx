@@ -19,7 +19,10 @@ const TodoList = () => {
   });
 
   if (isLoading) return <div>Loading...</div>;
-  if (error instanceof Error) return <div>{error.message}</div>;
+  if (error instanceof Error) {
+    console.log("Error fetching todos", error);
+    return <div>{error.message}</div>;
+  }
   if (!todos?.length) {
     return <div>No todos available</div>;
   }
